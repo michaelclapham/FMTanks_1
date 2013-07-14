@@ -17,7 +17,7 @@ public class FMTanks1GDX implements ApplicationListener {
 	private SpriteBatch batch;
 	private Texture texture;
 	private Sprite sprite;
-	private ArrayList<Updatable> updatables;
+	private ArrayList<Updatable> updatables2;
 	
 	
 	@Override
