@@ -23,7 +23,7 @@ public class MenuScreen implements Screen {
 	//UI elements
 	private Stage stage;
 	private TextButton newGameBtn, creditsBtn, exitBtn;
-	TextButtonStyle btnStyle;
+	private TextButtonStyle btnStyle;
 	
 	private SpriteBatch batch;
 
