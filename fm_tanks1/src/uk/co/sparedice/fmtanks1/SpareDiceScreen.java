@@ -1,23 +1,36 @@
 package uk.co.sparedice.fmtanks1;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class GameScreen implements Screen {
+public class SpareDiceScreen implements Screen {
 
 	private SpriteBatch batch;
 	private FMTanks1GDX game;
-	private BitmapFont font;
-	private Terrain terrain;
+	private Texture splashTexture;
+	private static final int SPLASH_TIME = 1500;
 	
-	public GameScreen(FMTanks1GDX game) {
+	public SpareDiceScreen(FMTanks1GDX game) {
 		this.game = game;
 		batch = new SpriteBatch();
-		font = new BitmapFont();
-		terrain = new Terrain();
+		splashTexture = new Texture(Gdx.files.internal("spare_dice_splash1.png"));
+		
+		Timer t = new Timer("sparedice_delay");
+		t.schedule(new TimerTask() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				
+			}
+		}, SPLASH_TIME);
 	}
 	
 	
@@ -28,11 +41,7 @@ public class GameScreen implements Screen {
 				
 		batch.begin();
 		{
-			//font.setColor(1.0f, 1.0f, 1.0f, 1.0f);
-			//font.draw(batch, "HAHA NOTHING IS HERE YET. TROLALOLOLOLOL", 10, Gdx.graphics.getHeight() / 2);
-			//Curly braces not strictly necessary, but it helps to separate code out
-			//Do the rendering
-			terrain.drawTerrain(batch);
+			batch.draw(splashTexture, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		}
 		batch.end();
 	}
