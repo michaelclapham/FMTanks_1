@@ -17,7 +17,7 @@ public class FMTanks1GDX implements ApplicationListener {
 	private SpriteBatch batch;
 	private Texture texture;
 	private Sprite sprite;
-	private ArrayList<Updatable> updatables2;
+	private ArrayList<Updatable> updatables;
 	
 	
 	@Override
@@ -25,7 +25,7 @@ public class FMTanks1GDX implements ApplicationListener {
 		float w = Gdx.graphics.getWidth();
 		float h = Gdx.graphics.getHeight();
 		
-		updatables2 = new ArrayList<Updatable>();
+		updatables = new ArrayList<Updatable>();
 		
 		camera = new OrthographicCamera(1, h/w);
 		batch = new SpriteBatch();
@@ -49,15 +49,24 @@ public class FMTanks1GDX implements ApplicationListener {
 
 	@Override
 	public void render() {		
+		
+		
+		/* LibGDX Rendering Setup */
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
-		for(int i = 0; i < updatables2.size(); i++){
-			updatables2.get(i).draw(batch);
+		
+		/* Our draw calls */
+		
+		sprite.draw(batch); //draws test image
+		
+		/* Draw all updatables */
+		for(int i = 0; i < updatables.size(); i++){
+			updatables.get(i).draw(batch);
 		}
-		sprite.draw(batch);
+		
 		batch.end();
 	}
 
