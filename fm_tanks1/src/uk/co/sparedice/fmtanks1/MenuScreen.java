@@ -1,5 +1,7 @@
 package uk.co.sparedice.fmtanks1;
 
+import java.awt.Font;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -20,7 +22,7 @@ public class MenuScreen implements Screen {
 	
 	//UI elements
 	private Stage stage;
-	private TextButton newGameBtn;
+	private TextButton newGameBtn, creditsBtn, exitBtn;
 	TextButtonStyle btnStyle;
 	
 	private SpriteBatch batch;
@@ -43,11 +45,31 @@ public class MenuScreen implements Screen {
 		newGameBtn.addListener( new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				tankGame.setScreen(new GameScreen(tankGame));
 				System.out.println("newGameBtn clicked");
+				tankGame.startGame();
 			}
 		});
 		stage.addActor(newGameBtn);
+		
+		creditsBtn = new TextButton("Credits", btnStyle);
+		creditsBtn.addListener( new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				System.out.println("creditsBtn clicked");
+				tankGame.showCredits();
+			}
+		});
+		stage.addActor(creditsBtn);
+		
+		exitBtn = new TextButton("Exit", btnStyle);
+		exitBtn.addListener( new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				System.out.println("exitBtn clicked");
+				Gdx.app.exit();
+			}
+		});
+		stage.addActor(exitBtn);
 	}
 
 	@Override
@@ -67,18 +89,34 @@ public class MenuScreen implements Screen {
 		System.out.println("Screen resized to " + width + " by " + height);
 		stage.setViewport(width, height, false);
 		
+		float spacing = 15;
 		float btnWidth = width/2;
 		float btnHeight = 80;
-		float btnX = (width - btnWidth) / 2;
-		float btnY = (height - btnHeight) / 2;
+		float btnX = width/2 - btnWidth/2;
+		float newGameY = height/2 - btnHeight/2 + btnHeight + spacing;
+		float creditsY = height/2 - btnHeight/2;
+		float exitY = height/2 - btnHeight/2 - btnHeight - spacing;
 		
-		System.out.println("moving newGameBtn to (" + btnX + ", " + btnY + ") with dimensions (" + btnWidth + ", " + btnHeight + ")");
 		newGameBtn.setWidth(btnWidth);
 		newGameBtn.setHeight(btnHeight);
 		newGameBtn.setX(btnX);
-		newGameBtn.setY(btnY);
+		newGameBtn.setY(newGameY);
 		newGameBtn.setText("New Game");
 		newGameBtn.setStyle(btnStyle);
+		
+		creditsBtn.setWidth(btnWidth);
+		creditsBtn.setHeight(btnHeight);
+		creditsBtn.setX(btnX);
+		creditsBtn.setY(creditsY);
+		creditsBtn.setText("Credits");
+		creditsBtn.setStyle(btnStyle);
+		
+		exitBtn.setWidth(btnWidth);
+		exitBtn.setHeight(btnHeight);
+		exitBtn.setX(btnX);
+		exitBtn.setY(exitY);
+		exitBtn.setText("Exit");
+		exitBtn.setStyle(btnStyle);
 	}
 
 	@Override

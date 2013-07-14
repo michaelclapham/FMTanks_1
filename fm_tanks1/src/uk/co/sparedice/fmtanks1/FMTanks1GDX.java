@@ -4,8 +4,9 @@ import com.badlogic.gdx.Game;
 
 public class FMTanks1GDX extends Game {
 	
-	MenuScreen menu;
-	GameScreen game;
+	private MenuScreen menu;
+	private GameScreen game;
+	private CreditsScreen credits;
 	
 	@Override
 	public void create() {		
@@ -16,5 +17,15 @@ public class FMTanks1GDX extends Game {
 	@Override
 	public void dispose() {
 		
+	}
+	
+	public void startGame() {
+		game = new GameScreen(this);
+		setScreen(game);
+	}
+	
+	public void showCredits() {
+		credits = new CreditsScreen(this);
+		setScreen(credits);
 	}
 }
