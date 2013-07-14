@@ -1,5 +1,7 @@
 package uk.co.sparedice.fmtanks1;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL10;
@@ -15,11 +17,15 @@ public class FMTanks1GDX implements ApplicationListener {
 	private SpriteBatch batch;
 	private Texture texture;
 	private Sprite sprite;
+	private ArrayList<Updatable> updatables;
+	
 	
 	@Override
 	public void create() {		
 		float w = Gdx.graphics.getWidth();
 		float h = Gdx.graphics.getHeight();
+		
+		updatables = new ArrayList<Updatable>();
 		
 		camera = new OrthographicCamera(1, h/w);
 		batch = new SpriteBatch();
@@ -43,12 +49,24 @@ public class FMTanks1GDX implements ApplicationListener {
 
 	@Override
 	public void render() {		
+		
+		
+		/* LibGDX Rendering Setup */
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
-		sprite.draw(batch);
+		
+		/* Our draw calls */
+		
+		sprite.draw(batch); //draws test image
+		
+		/* Draw all updatables */
+		for(int i = 0; i < updatables.size(); i++){
+			updatables.get(i).draw(batch);
+		}
+		
 		batch.end();
 	}
 
