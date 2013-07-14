@@ -52,6 +52,9 @@ public class FMTanks1GDX implements ApplicationListener {
 		
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
+		for(int i = 0; i < updatables2.size(); i++){
+			updatables2.get(i).draw(batch);
+		}
 		sprite.draw(batch);
 		batch.end();
 	}
