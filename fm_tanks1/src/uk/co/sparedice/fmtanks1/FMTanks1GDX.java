@@ -1,5 +1,7 @@
 package uk.co.sparedice.fmtanks1;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL10;
@@ -15,6 +17,8 @@ public class FMTanks1GDX implements ApplicationListener {
 	private SpriteBatch batch;
 	private Texture texture;
 	private Sprite sprite;
+	private ArrayList<Updatable> updatables;
+	
 	
 	@Override
 	public void create() {		
