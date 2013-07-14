@@ -25,6 +25,8 @@ public class FMTanks1GDX implements ApplicationListener {
 		float w = Gdx.graphics.getWidth();
 		float h = Gdx.graphics.getHeight();
 		
+		updatables2 = new ArrayList<Updatable>();
+		
 		camera = new OrthographicCamera(1, h/w);
 		batch = new SpriteBatch();
 		
