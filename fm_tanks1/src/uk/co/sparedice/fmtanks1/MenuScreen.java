@@ -1,7 +1,5 @@
 package uk.co.sparedice.fmtanks1;
 
-import java.awt.Font;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -19,22 +17,25 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 public class MenuScreen implements Screen {
 
 	private FMTanks1GDX tankGame;
-	
-	//UI elements
+
+	// UI elements
 	private Stage stage;
-	private TextButton newGameBtn, creditsBtn, exitBtn;
+	private TextButton newGameBtn, loadGameBtn, arcadeBtn, creditsBtn, exitBtn;
 	private TextButtonStyle btnStyle;
-	
+
 	private SpriteBatch batch;
 
 	public MenuScreen(FMTanks1GDX game) {
 		tankGame = game;
-		stage = new Stage(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), true);
+		stage = new Stage(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(),
+				true);
 		stage.clear();
 		Gdx.input.setInputProcessor(stage);
 
-		TextureRegion up = new TextureRegion(new Texture(Gdx.files.internal("textBtn.png")));
-		// TextureRegion down = new TextureRegion(new Texture(Gdx.files.internal("buttonpressed.png")));
+		TextureRegion up = new TextureRegion(new Texture(
+				Gdx.files.internal("textBtn.png")));
+		// TextureRegion down = new TextureRegion(new
+		// Texture(Gdx.files.internal("buttonpressed.png")));
 		BitmapFont btnFont = new BitmapFont();
 		btnStyle = new TextButtonStyle();
 		btnStyle.up = new TextureRegionDrawable(up);
@@ -42,17 +43,34 @@ public class MenuScreen implements Screen {
 		btnStyle.font = btnFont;
 
 		newGameBtn = new TextButton("New Game", btnStyle);
-		newGameBtn.addListener( new ClickListener() {
+		newGameBtn.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				System.out.println("newGameBtn clicked");
-				tankGame.startGame();
 			}
 		});
 		stage.addActor(newGameBtn);
-		
+
+		loadGameBtn = new TextButton("Load Game", btnStyle);
+		loadGameBtn.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				System.out.println("loadGameBtn clicked");
+			}
+		});
+		stage.addActor(loadGameBtn);
+
+		arcadeBtn = new TextButton("Arcade", btnStyle);
+		arcadeBtn.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				System.out.println("arcadeBtn clicked");
+			}
+		});
+		stage.addActor(arcadeBtn);
+
 		creditsBtn = new TextButton("Credits", btnStyle);
-		creditsBtn.addListener( new ClickListener() {
+		creditsBtn.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				System.out.println("creditsBtn clicked");
@@ -60,9 +78,9 @@ public class MenuScreen implements Screen {
 			}
 		});
 		stage.addActor(creditsBtn);
-		
+
 		exitBtn = new TextButton("Exit", btnStyle);
-		exitBtn.addListener( new ClickListener() {
+		exitBtn.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				System.out.println("exitBtn clicked");
@@ -88,15 +106,17 @@ public class MenuScreen implements Screen {
 	public void resize(int width, int height) {
 		System.out.println("Screen resized to " + width + " by " + height);
 		stage.setViewport(width, height, false);
-		
+
 		float spacing = 15;
-		float btnWidth = width/2;
+		float btnWidth = width / 2;
 		float btnHeight = 80;
-		float btnX = width/2 - btnWidth/2;
-		float newGameY = height/2 - btnHeight/2 + btnHeight + spacing;
-		float creditsY = height/2 - btnHeight/2;
-		float exitY = height/2 - btnHeight/2 - btnHeight - spacing;
-		
+		float btnX = width / 2 - btnWidth / 2;
+		float newGameY = height / 2 - btnHeight / 2 + 2*btnHeight + 2*spacing;
+		float loadGameY = newGameY - btnHeight - spacing;
+		float arcadeY = loadGameY - btnHeight - spacing;
+		float creditsY = arcadeY - btnHeight - spacing;
+		float exitY = creditsY - btnHeight - spacing;
+
 		newGameBtn.setWidth(btnWidth);
 		newGameBtn.setHeight(btnHeight);
 		newGameBtn.setX(btnX);
@@ -104,13 +124,27 @@ public class MenuScreen implements Screen {
 		newGameBtn.setText("New Game");
 		newGameBtn.setStyle(btnStyle);
 		
+		loadGameBtn.setWidth(btnWidth);
+		loadGameBtn.setHeight(btnHeight);
+		loadGameBtn.setX(btnX);
+		loadGameBtn.setY(loadGameY);
+		loadGameBtn.setText("Load Game");
+		loadGameBtn.setStyle(btnStyle);
+
+		arcadeBtn.setWidth(btnWidth);
+		arcadeBtn.setHeight(btnHeight);
+		arcadeBtn.setX(btnX);
+		arcadeBtn.setY(arcadeY);
+		arcadeBtn.setText("Arcade");
+		arcadeBtn.setStyle(btnStyle);
+
 		creditsBtn.setWidth(btnWidth);
 		creditsBtn.setHeight(btnHeight);
 		creditsBtn.setX(btnX);
 		creditsBtn.setY(creditsY);
 		creditsBtn.setText("Credits");
 		creditsBtn.setStyle(btnStyle);
-		
+
 		exitBtn.setWidth(btnWidth);
 		exitBtn.setHeight(btnHeight);
 		exitBtn.setX(btnX);

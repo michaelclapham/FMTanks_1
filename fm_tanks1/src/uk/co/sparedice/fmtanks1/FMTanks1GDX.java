@@ -10,7 +10,7 @@ public class FMTanks1GDX extends Game {
 	
 	@Override
 	public void create() {		
-		showMenu();
+		setScreen(new SplashScreen(this));
 	}
 
 	@Override
