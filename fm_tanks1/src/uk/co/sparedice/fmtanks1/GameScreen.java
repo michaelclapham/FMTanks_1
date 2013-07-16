@@ -9,12 +9,12 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class GameScreen implements Screen {
 
 	private SpriteBatch batch;
-	private FMTanks1GDX game;
+	private FMTanks1GDX tankGame;
 	private BitmapFont font;
 	private Terrain terrain;
 	
 	public GameScreen(FMTanks1GDX game) {
-		this.game = game;
+		tankGame = game;
 		batch = new SpriteBatch();
 		font = new BitmapFont();
 		terrain = new Terrain();
