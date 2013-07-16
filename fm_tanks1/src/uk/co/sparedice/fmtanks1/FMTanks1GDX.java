@@ -10,8 +10,7 @@ public class FMTanks1GDX extends Game {
 	
 	@Override
 	public void create() {		
-		menu = new MenuScreen(this);
-		setScreen(menu);
+		setScreen(new SplashScreen(this));
 	}
 
 	@Override
@@ -22,6 +21,11 @@ public class FMTanks1GDX extends Game {
 	public void startGame() {
 		game = new GameScreen(this);
 		setScreen(game);
+	}
+	
+	public void showMenu() {
+		menu = new MenuScreen(this);
+		setScreen(menu);
 	}
 	
 	public void showCredits() {
