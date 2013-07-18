@@ -36,6 +36,8 @@ public class GameScreen implements Screen {
 				stage.act();
 			}
 		}, 40, 40);
+		stage.addActor(terrain);
+		stage.addActor(testTank);
 	}
 	
 	
@@ -53,8 +55,7 @@ public class GameScreen implements Screen {
 			font.setColor(1.0f, 1.0f, 1.0f, 1.0f);
 			font.draw(batch, "HAHA NOTHING IS HERE YET. TROLALOLOLOLOL", Gdx.graphics.getWidth()/2 - font.getBounds("HAHA NOTHING IS HERE YET. TROLALOLOLOLOL").width/2, Gdx.graphics.getHeight()/2 - - font.getBounds("HAHA NOTHING IS HERE YET. TROLALOLOLOLOL").height/2);
 			//Do the rendering
-			testTank.draw(batch,1f);
-			terrain.draw(batch,1f);
+			stage.draw();
 		}
 		batch.end();
 	}

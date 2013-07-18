@@ -53,7 +53,7 @@ public class Tank extends PhysicsActor {
 		turretSprite.draw(sb);
 	}
 	
-	public void update(){
+	public void act(float delta){
 		turretAngle += 1;
 		applyPhysics();
 	}
