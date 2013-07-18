@@ -27,8 +27,7 @@ public class MenuScreen implements Screen {
 
 	public MenuScreen(FMTanks1GDX game) {
 		tankGame = game;
-		stage = new Stage(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(),
-				true);
+		stage = new Stage(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), true);
 		stage.clear();
 		Gdx.input.setInputProcessor(stage);
 
@@ -172,13 +171,11 @@ public class MenuScreen implements Screen {
 
 	@Override
 	public void pause() {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void resume() {
-		// TODO Auto-generated method stub
 
 	}
 

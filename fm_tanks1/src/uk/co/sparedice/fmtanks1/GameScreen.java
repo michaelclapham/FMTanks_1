@@ -12,8 +12,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class GameScreen implements Screen {
 
-	private SpriteBatch batch;
 	private FMTanks1GDX tankGame;
+	private SpriteBatch batch;
 	private BitmapFont font;
 	private Terrain terrain;
 	private Tank testTank;
@@ -22,6 +22,7 @@ public class GameScreen implements Screen {
 	public GameScreen(FMTanks1GDX game) {
 		tankGame = game;
 		batch = new SpriteBatch();
+		stage = new Stage(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), true);
 		font = new BitmapFont();
 		terrain = new Terrain();
 		stage = new Stage(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),false);
@@ -42,15 +43,18 @@ public class GameScreen implements Screen {
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-				
+		Gdx.input.setInputProcessor(stage);
+		
 		batch.begin();
 		{
 			//font.setColor(1.0f, 1.0f, 1.0f, 1.0f);
 			//font.draw(batch, "HAHA NOTHING IS HERE YET. TROLALOLOLOLOL", 10, Gdx.graphics.getHeight() / 2);
 			//Curly braces not strictly necessary, but it helps to separate code out
+			font.setColor(1.0f, 1.0f, 1.0f, 1.0f);
+			font.draw(batch, "HAHA NOTHING IS HERE YET. TROLALOLOLOLOL", Gdx.graphics.getWidth()/2 - font.getBounds("HAHA NOTHING IS HERE YET. TROLALOLOLOLOL").width/2, Gdx.graphics.getHeight()/2 - - font.getBounds("HAHA NOTHING IS HERE YET. TROLALOLOLOLOL").height/2);
 			//Do the rendering
-			terrain.drawTerrain(batch);
 			testTank.draw(batch,1f);
+			terrain.draw(batch,1f);
 		}
 		batch.end();
 	}
@@ -80,6 +84,7 @@ public class GameScreen implements Screen {
 	@Override
 	public void dispose() {
 		batch.dispose();
+		stage.dispose();
 	}
 	
 }

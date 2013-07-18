@@ -5,8 +5,9 @@ import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.TextureData;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 
-public class Terrain {
+public class Terrain extends Actor {
 	
 	private int tileData[][];
 	private int width = 40;
@@ -32,7 +33,7 @@ public class Terrain {
 		loadFromBitmap(pathToBitmap);
 	}
 	
-	public void drawTerrain(SpriteBatch batch){
+	public void draw(SpriteBatch batch, float parentAlpha){
 		for(int i = 0; i < width; i++){
 			for(int j = 0; j < height; j++){
 				if(tileData[i][j] == 0){
