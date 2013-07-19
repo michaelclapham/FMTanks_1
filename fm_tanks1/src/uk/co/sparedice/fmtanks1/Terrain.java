@@ -7,6 +7,11 @@ import com.badlogic.gdx.graphics.TextureData;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
+/**
+ * Terrain object as Actor. Loads images and tiles them together to make background terrain
+ * @author Michael
+ */
+
 public class Terrain extends Actor {
 	
 	private int tileData[][];

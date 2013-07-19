@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 
 public class Tank extends PhysicsActor {
 	
@@ -30,6 +31,9 @@ public class Tank extends PhysicsActor {
 		posY = 200;
 		bodySprite = new Sprite(bodyTexture);
 		turretSprite = new Sprite(turretTexture);
+		setWidth(bodySprite.getWidth());
+		setHeight(bodySprite.getHeight());
+		addOnClickListener();
 	}
 	
 	public static void loadStatic (){
@@ -52,4 +56,9 @@ public class Tank extends PhysicsActor {
 		applyPhysics();
 	}
 
+	@Override
+	protected void onClick(InputEvent event, float x, float y) {
+		bodyAngle -= 15;
+	}
+	
 }
