@@ -22,8 +22,6 @@ public class Tank extends PhysicsActor {
 	private int team = TEAM_PLAYER;
 	
 	private static Texture bodyTexture, turretTexture;
-	private static int half_width, half_height;
-	private static int width, height;
 	
 	private Sprite bodySprite, turretSprite;
 	
@@ -37,10 +35,6 @@ public class Tank extends PhysicsActor {
 	public static void loadStatic (){
 		bodyTexture = new Texture(Gdx.files.internal("tank_body_1.png"));
 		turretTexture = new Texture(Gdx.files.internal("tank_turret_1.png"));
-		half_width = bodyTexture.getWidth() / 2;
-		half_height = bodyTexture.getHeight() / 2;
-		width = bodyTexture.getWidth();
-		height = bodyTexture.getHeight();
 	}
 	
 	@Override

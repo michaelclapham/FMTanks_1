@@ -17,7 +17,7 @@ public class SplashScreen implements Screen {
 	float ratio;
 	private Image splashImage;
 	private float time;
-	private float maxTime = 5;
+	private float maxTime = 3;
 	
 	public SplashScreen(FMTanks1GDX game) {
 		tankGame = game;

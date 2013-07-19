@@ -7,7 +7,6 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 public class PhysicsActor extends Actor {
 	
 	protected float posX, posY, velX, velY, accX, accY;
-	protected float width, height;
 	
 	/* Constant acceleration */
 	protected float cacX, cacY;
@@ -25,7 +24,7 @@ public class PhysicsActor extends Actor {
 		posX += velX;
 		posY += velY;
 		setPosition(posX, posY);
-		setBounds(posX, posY, width, height);
+		setBounds(posX, posY, getWidth(), getHeight());
 	}
 
 }
