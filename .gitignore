@@ -15,6 +15,7 @@ local.properties
 .classpath
 .settings/
 .loadpath
+/fm_tanks1-android/gen
 
 # External tool builders
 .externalToolBuilders/
