@@ -25,8 +25,10 @@ public class Tank extends PhysicsActor {
 	private static Texture bodyTexture, turretTexture;
 	
 	private Sprite bodySprite, turretSprite;
+	private TankContainer container;
 	
-	 public Tank() {
+	public Tank(TankContainer container) {
+		this.container = container;
 		posX = 200;
 		posY = 200;
 		bodySprite = new Sprite(bodyTexture);

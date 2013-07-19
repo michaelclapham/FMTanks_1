@@ -18,6 +18,7 @@ public class GameScreen implements Screen {
 	private Terrain terrain;
 	private Tank testTank;
 	private Stage stage;
+	private TankContainer tankContainer;
 	
 	public GameScreen(FMTanks1GDX game) {
 		tankGame = game;
@@ -26,8 +27,9 @@ public class GameScreen implements Screen {
 		font = new BitmapFont();
 		terrain = new Terrain();
 		stage = new Stage(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),false);
+		tankContainer = new TankContainer();
 		Tank.loadStatic();
-		testTank = new Tank();
+		testTank = new Tank(tankContainer);
 		Timer t = new Timer("Update Timer Thread");
 		t.schedule(new TimerTask() {
 			
@@ -38,6 +40,9 @@ public class GameScreen implements Screen {
 		}, 40, 40);
 		stage.addActor(terrain);
 		stage.addActor(testTank);
+		Tank t2 = new Tank(tankContainer);
+		t2.posX = 300;
+		stage.addActor(t2);
 	}
 	
 	

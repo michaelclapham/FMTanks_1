@@ -64,6 +64,16 @@ public class Terrain extends Actor {
 		}
 	}
 	
-	
+	/**
+	 * Returns if a position in the game world is an obstacle.
+	 * Does not vary depending upon camera position. Does vary depending on 
+	 * tile size.
+	 * @param x
+	 * @param y
+	 * @return 
+	 */
+	public boolean isObstable(float x, float y){
+		return false;
+	}
 
 }
