@@ -213,3 +213,8 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+/fm_tanks1/nbproject/private/
+/fm_tanks1/nbproject/
+/fm_tanks1/build.xml
+/fm_tanks1/manifest.mf
+/fm_tanks1/src/uk/co/sparedice/fmtanks1/NetbeansMain.java
