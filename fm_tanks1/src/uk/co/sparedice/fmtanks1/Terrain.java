@@ -6,6 +6,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.TextureData;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 /**
  * Terrain object as Actor. Loads images and tiles them together to make background terrain
@@ -25,17 +27,29 @@ public class Terrain extends Actor {
 	private Texture desertTexture;
 	private int desertColor;
 	
-	public Terrain(){
+	//Tank Container
+	private TankContainer tankContainer;
+	
+	public Terrain(TankContainer tankContainer){
+		this.tankContainer = tankContainer;
 		tileData = new int[width][height];
 		grassTexture = new Texture(Gdx.files.internal("grass1.png"));
 		desertTexture = new Texture(Gdx.files.internal("desert1.png"));
+		
+		//Add click listener
+		setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		addListener(new ClickListener(){
+
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				((Terrain)event.getTarget()).onClick(event,x,y);
+			}
+			
+		});
+		
 		tileData[1][1] = 1;
 		tileData[1][2] = 1;
 		tileData[2][3] = 1;
-	}
-	
-	public Terrain(String pathToBitmap){
-		loadFromBitmap(pathToBitmap);
 	}
 	
 	public void draw(SpriteBatch batch, float parentAlpha){
@@ -51,7 +65,7 @@ public class Terrain extends Actor {
 		}
 	}
 	
-	public void loadFromBitmap(String path){
+	private void loadFromBitmap(String path){
 		Texture tex = new Texture (Gdx.files.internal(path));
 		width = tex.getWidth();
 		height = tex.getHeight();
@@ -74,6 +88,13 @@ public class Terrain extends Actor {
 	 */
 	public boolean isObstable(float x, float y){
 		return false;
+	}
+
+	private void onClick(InputEvent event, float x, float y) {
+		Tank t = tankContainer.getSelectedTank();
+		if(t != null){
+			t.setTargetLocation(x-50, y-50);
+		}
 	}
 
 }

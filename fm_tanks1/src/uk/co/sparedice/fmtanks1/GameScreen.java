@@ -25,9 +25,9 @@ public class GameScreen implements Screen {
 		batch = new SpriteBatch();
 		stage = new Stage(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), true);
 		font = new BitmapFont();
-		terrain = new Terrain();
-		stage = new Stage(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),false);
 		tankContainer = new TankContainer();
+		terrain = new Terrain(tankContainer);
+		stage = new Stage(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),false);
 		Tank.loadStatic();
 		testTank = new Tank(tankContainer);
 		Timer t = new Timer("Update Timer Thread");
@@ -42,7 +42,10 @@ public class GameScreen implements Screen {
 		stage.addActor(testTank);
 		Tank t2 = new Tank(tankContainer);
 		t2.posX = 300;
+		Tank t3 = new Tank(tankContainer);
+		t3.posY = 400;
 		stage.addActor(t2);
+		stage.addActor(t3);
 	}
 	
 	
