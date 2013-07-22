@@ -5,7 +5,9 @@ import java.util.TimerTask;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -19,6 +21,7 @@ public class GameScreen implements Screen {
 	private Tank testTank;
 	private Stage stage;
 	private TankContainer tankContainer;
+	private Camera camera;
 	
 	public GameScreen(FMTanks1GDX game) {
 		tankGame = game;
@@ -28,6 +31,8 @@ public class GameScreen implements Screen {
 		tankContainer = new TankContainer();
 		terrain = new Terrain(tankContainer);
 		stage = new Stage(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),false);
+		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		stage.setCamera(camera);
 		Tank.loadStatic();
 		testTank = new Tank(tankContainer);
 		Timer t = new Timer("Update Timer Thread");
@@ -54,6 +59,7 @@ public class GameScreen implements Screen {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		Gdx.input.setInputProcessor(stage);
+		
 		
 		batch.begin();
 		{
