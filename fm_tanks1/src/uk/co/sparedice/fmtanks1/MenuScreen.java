@@ -65,6 +65,7 @@ public class MenuScreen implements Screen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				System.out.println("arcadeBtn clicked");
+				tankGame.showArcadeMenu();
 			}
 		});
 		stage.addActor(arcadeBtn);

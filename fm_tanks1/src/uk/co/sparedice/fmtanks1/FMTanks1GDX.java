@@ -6,6 +6,7 @@ public class FMTanks1GDX extends Game {
 	
 	private MenuScreen menu;
 	private GameScreen game;
+	private LevelChooserScreen arcadeMenu;
 	private CreditsScreen credits;
 	
 	@Override
@@ -17,15 +18,25 @@ public class FMTanks1GDX extends Game {
 	public void dispose() {
 		
 	}
+		
+	public void showMenu() {
+		menu = new MenuScreen(this);
+		setScreen(menu);
+	}
 	
 	public void startGame() {
 		game = new GameScreen(this);
 		setScreen(game);
 	}
 	
-	public void showMenu() {
-		menu = new MenuScreen(this);
-		setScreen(menu);
+	public void showArcadeMenu() {
+		String[] levels = {"red-level", "green-level"};
+		arcadeMenu = new LevelChooserScreen(this, levels);
+		setScreen(arcadeMenu);
+	}
+	
+	public void startArcadeGame(String levelName) {
+		
 	}
 	
 	public void showCredits() {
