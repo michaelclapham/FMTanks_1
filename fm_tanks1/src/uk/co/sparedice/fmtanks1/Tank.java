@@ -19,15 +19,15 @@ public class Tank extends PhysicsActor {
 	/* The angle of the selector circle */
 	private float selectorAngle = 0f;
 	
-	private static final int TEAM_PLAYER = 0; // Human controlled tanks in single player
-	private static final int TEAM_ENEMY = 1; // AI controlled tanks in single player
-	private static final int TEAM_RED = 2; // Red Team in multiplayer
-	private static final int TEAM_BLUE = 3; // Blue Team in multiplayer
+	public static final int TEAM_PLAYER = 0; // Human controlled tanks in single player
+	public static final int TEAM_ENEMY = 1; // AI controlled tanks in single player
+	public static final int TEAM_RED = 2; // Red Team in multiplayer
+	public static final int TEAM_BLUE = 3; // Blue Team in multiplayer
 	
 	/* The team ID of the tank. Defines who it can damage and who can damage it */
-	private int team = TEAM_PLAYER;
+	protected int team = TEAM_PLAYER;
 	
-	private static Texture bodyTexture, turretTexture, selectorTexture;
+	protected static Texture bodyTexture, turretTexture, selectorTexture;
 	
 	private Sprite bodySprite, turretSprite, selectorSprite;
 	private TankContainer container;
