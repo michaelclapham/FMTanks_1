@@ -27,9 +27,9 @@ public class Tank extends PhysicsActor {
 	/* The team ID of the tank. Defines who it can damage and who can damage it */
 	protected int team = TEAM_PLAYER;
 	
-	protected static Texture bodyTexture, turretTexture, selectorTexture;
+	private static Texture bodyTexture, turretTexture, selectorTexture;
 	
-	private Sprite bodySprite, turretSprite, selectorSprite;
+	protected Sprite bodySprite, turretSprite, selectorSprite;
 	private TankContainer container;
 	private boolean selected;
 	

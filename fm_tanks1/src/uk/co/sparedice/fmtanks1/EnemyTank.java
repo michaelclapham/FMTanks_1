@@ -6,16 +6,22 @@ package uk.co.sparedice.fmtanks1;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 
 /**
  *
  * @author Michael
  */
 public class EnemyTank extends Tank {
+	
+	private static Texture bodyTexture, turretTexture, selectorTexture;
 
 	public EnemyTank(TankContainer container) {
 		super(container);
 		team = TEAM_ENEMY;
+		bodySprite = new Sprite(bodyTexture);
+		turretSprite = new Sprite(turretTexture);
+		selectorSprite = new Sprite(selectorTexture);
 	}
 	
 	public static void loadStatic(){

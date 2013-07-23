@@ -4,6 +4,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.GL20;
@@ -33,7 +34,9 @@ public class GameScreen implements Screen {
 		stage = new Stage(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),false);
 		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		stage.setCamera(camera);
+		camera.translate(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2, 0);
 		Tank.loadStatic();
+		EnemyTank.loadStatic();
 		testTank = new Tank(tankContainer);
 		Timer t = new Timer("Update Timer Thread");
 		t.schedule(new TimerTask() {
@@ -41,6 +44,18 @@ public class GameScreen implements Screen {
 			@Override
 			public void run() {
 				stage.act();
+				if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
+					camera.translate(10, 0, 0);
+				}
+				if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
+					camera.translate(-10, 0, 0);
+				}
+				if(Gdx.input.isKeyPressed(Input.Keys.UP)){
+					camera.translate(0, 10, 0);
+				}
+				if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
+					camera.translate(0, -10, 0);
+				}
 			}
 		}, 40, 40);
 		stage.addActor(terrain);
@@ -51,6 +66,8 @@ public class GameScreen implements Screen {
 		t3.posY = 400;
 		stage.addActor(t2);
 		stage.addActor(t3);
+		Tank t4 = new EnemyTank(tankContainer);
+		stage.addActor(t4);
 	}
 	
 	
