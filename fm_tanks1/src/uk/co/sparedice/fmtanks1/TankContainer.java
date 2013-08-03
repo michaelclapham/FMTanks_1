@@ -4,13 +4,15 @@
  */
 package uk.co.sparedice.fmtanks1;
 
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Class that gives tanks a way of communicating with each other
+ * Class that gives game world objects a way of communicating with each other
  * @author Michael
  */
-public class TankContainer {
+public class TankContainer implements WorldContainer {
 	
 	private ArrayList<Tank> tanks = new ArrayList<Tank>();
 	private Tank selectedTank;
@@ -27,13 +29,13 @@ public class TankContainer {
 		return tanks;
 	}
 	
-	public void forAll(TCT tct){
+	public void forAllTanks(TCT tct){
 		for(int i = 0; i < tanks.size(); i++){
 			tct.task(tanks.get(i));
 		}
 	}
 	
-	public void forAllBut(Tank tank, TCT tct){
+	public void forAllTanksBut(Tank tank, TCT tct){
 		for(int i = 0; i < tanks.size(); i++){
 			if(!tanks.get(i).equals(tank)){
 				tct.task(tanks.get(i));
@@ -41,14 +43,7 @@ public class TankContainer {
 		}
 	}
 
-	/*
-	 * Tank Container Task. Small encapsulator for method to be passed as parameter
-	 */
-	public interface TCT {
-		
-		public void task(Tank tank);
-		
-	}
+
 	
 	public void setSelectedTank(Tank selectedTank){
 		this.selectedTank = selectedTank;
@@ -63,5 +58,25 @@ public class TankContainer {
 	public Tank getSelectedTank() {
 		return selectedTank;
 	}
+
+    @Override
+    public List<Actor> getActors() {
+        return new ArrayList<>(1);
+    }
+
+    @Override
+    public boolean removeTank(Tank t) {
+        return false;
+    }
+
+    @Override
+    public void forAll(CT act) {
+        //
+    }
+
+    @Override
+    public void forAllBut(Actor actor, CT tct) {
+        //
+    }
 	
 }
