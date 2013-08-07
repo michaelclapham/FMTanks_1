@@ -8,8 +8,8 @@ public class Main {
 		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
 		cfg.title = "fm_tanks1";
 		cfg.useGL20 = true;
-		cfg.width = 800;
-		cfg.height = 600;
+		cfg.width = 960;
+		cfg.height = 640;
 		cfg.vSyncEnabled = true;
 		
 		new LwjglApplication(new FMTanks1GDX(), cfg);

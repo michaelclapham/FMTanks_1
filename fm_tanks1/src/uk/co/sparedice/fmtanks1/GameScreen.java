@@ -23,20 +23,25 @@ public class GameScreen implements Screen {
 	private Stage stage;
 	private TankContainer tankContainer;
 	private Camera camera;
+	private int yesyes;
 	
 	public GameScreen(FMTanks1GDX game) {
 		tankGame = game;
 		batch = new SpriteBatch();
 		stage = new Stage(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), true);
 		font = new BitmapFont();
-		tankContainer = new TankContainer();
+		tankContainer = new TankContainer(stage);
 		terrain = new Terrain(tankContainer);
 		stage = new Stage(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),false);
 		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		stage.setCamera(camera);
 		camera.translate(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2, 0);
+                
+                /* Load all static resources */
 		Tank.loadStatic();
 		EnemyTank.loadStatic();
+                Bullet.loadStatic();
+                
 		testTank = new Tank(tankContainer);
 		Timer t = new Timer("Update Timer Thread");
 		t.schedule(new TimerTask() {
@@ -58,6 +63,8 @@ public class GameScreen implements Screen {
 				}
 			}
 		}, 40, 40);
+		Bullet b1 = new Bullet(tankContainer, Tank.TEAM_PLAYER, 45, 50, 50);
+		stage.addActor(b1);
 		stage.addActor(terrain);
 		stage.addActor(testTank);
 		Tank t2 = new Tank(tankContainer);
@@ -73,6 +80,11 @@ public class GameScreen implements Screen {
 	
 	@Override
 	public void render(float delta) {
+		yesyes++;
+		if(yesyes%10==0){
+			stage.addActor(new Bullet(tankContainer, Tank.TEAM_PLAYER, 45, 50, 50));
+		}
+		//stage.addActor(new Bullet(tankContainer, Tank.TEAM_PLAYER, 45, 50, 50));
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		Gdx.input.setInputProcessor(stage);

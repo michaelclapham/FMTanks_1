@@ -39,6 +39,10 @@ public class PhysicsActor extends Actor {
 		setPosition(posX, posY);
 		setBounds(posX, posY, getWidth(), getHeight());
 	}
+        
+        public Rectangle getBounds(){
+            return new Rectangle(posX, posY, getWidth(), getHeight());
+        }
 
 	protected void onClick(InputEvent event, float x, float y) {
 		//Overrriden
