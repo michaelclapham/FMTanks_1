@@ -119,8 +119,6 @@ public class Tank extends PhysicsActor {
         }
 
         //Search and Wave
-<<<<<<< HEAD
-<<<<<<< HEAD
 //        container.forAllTanksBut(this,new TCT() { public void task(Tank tank){
 //            if(tank.getTeam() == TEAM_PLAYER){
 //                if(within(300,tank.getX(), tank.getY())){
@@ -129,10 +127,8 @@ public class Tank extends PhysicsActor {
 //                }
 //            }
 //        }});
-=======
-=======
->>>>>>> 30e0468c034b0389398ccc63dcbfbdeb63a910fc
-        container.forAllTanksBut(this,new TCT() { public void task(Tank tank){
+		
+        container.forAllTanksBut(this,new TankTask() { public void task(Tank tank){
             if(tank.getTeam() == TEAM_PLAYER){
                 if(within(300,tank.getX(), tank.getY())){
                     //Point gun at it
@@ -140,10 +136,7 @@ public class Tank extends PhysicsActor {
                 }
             }
         }});
-<<<<<<< HEAD
->>>>>>> 30e0468c034b0389398ccc63dcbfbdeb63a910fc
-=======
->>>>>>> 30e0468c034b0389398ccc63dcbfbdeb63a910fc
+
     }
 
     @Override

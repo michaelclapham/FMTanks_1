@@ -118,5 +118,15 @@ public class TankContainer implements IWorld {
         actors.add(a);
 		stage.getRoot().addActor(a);
     }
+
+	@Override
+	public ITerrain getTerrain() {
+		return null;
+	}
+
+	@Override
+	public void setTerrain(ITerrain terrain) {
+		//
+	}
 	
 }
